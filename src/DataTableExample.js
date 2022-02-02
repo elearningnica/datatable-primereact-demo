@@ -3,6 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import axios from "axios";
 import { TabView, TabPanel } from "primereact/tabview";
+import { Accordion, AccordionTab } from "primereact/accordion";
 
 const DataTableExample = () => {
   const [posts, setPosts] = useState([]);
@@ -21,11 +22,8 @@ const DataTableExample = () => {
 
   return (
     <div>
-      <TabView
-        activeIndex={activeIndex}
-        onTabChange={(e) => setActiveIndex(e.index)}
-      >
-        <TabPanel header="Posts">
+      <Accordion activeIndex={0}>
+        <AccordionTab header="Posts">
           <div>
             <DataTable
               value={posts}
@@ -44,8 +42,8 @@ const DataTableExample = () => {
               <Column field="body" sortable header="body"></Column>
             </DataTable>
           </div>
-        </TabPanel>
-        <TabPanel header="Users">
+        </AccordionTab>
+        <AccordionTab header="Users">
           <div>
             <DataTable
               value={users}
@@ -66,8 +64,8 @@ const DataTableExample = () => {
               <Column field="website" sortable header="website"></Column>
             </DataTable>
           </div>
-        </TabPanel>
-      </TabView>
+        </AccordionTab>
+      </Accordion>
     </div>
   );
 };
